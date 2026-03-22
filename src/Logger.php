@@ -21,7 +21,7 @@ class Logger extends AbstractLogger
      */
     public function log($level, string | Stringable $message, array $context = []): void
     {
-        if (($context['exception'] ?? null) != null && ($context['exception'] instanceof Throwable) == false) {
+        if (($context['exception'] ?? null) !== null && !($context['exception'] instanceof Throwable)) {
             throw new InvalidArgumentException('The exception must be an instance of Throwable');
         }
 

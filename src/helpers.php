@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SimpleLogger;
 
 use function array_merge;
-use function join;
+use function implode;
 use function preg_replace;
 
 /**
@@ -13,7 +13,7 @@ use function preg_replace;
  * @param string ...$args
  * @return string
  */
-function pathJoin(...$args)
+function pathJoin(...$args): string
 {
     $paths = [];
 
@@ -21,5 +21,5 @@ function pathJoin(...$args)
         $paths = array_merge($paths, (array) $arg);
     }
 
-    return preg_replace('#/+#', '/', join('/', $paths));
+    return preg_replace('#/+#', '/', implode('/', $paths));
 }
